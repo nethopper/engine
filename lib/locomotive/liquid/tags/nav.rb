@@ -86,7 +86,7 @@ module Locomotive
 
           icon = @options[:icon] ? '<span></span>' : ''
 
-          title = @options[:liquid_render] ? @options[:liquid_render].render('page' => page) : page.title
+          title = @options[:liquid_render] ? @options[:liquid_render].render({ 'page' => page }, { registers: { site: @site }}) : page.title
 
           label = %{#{icon if @options[:icon] != 'after' }#{title}#{icon if @options[:icon] == 'after' }}
 
