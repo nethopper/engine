@@ -129,6 +129,11 @@ describe Locomotive::Liquid::Tags::Nav do
       end
     end
 
+    it 'renders theme assets in snippet' do
+      snippet = "{{ \"foo.jpg\" | theme_image_tag }}"
+      render_nav('site', {}, "snippet: '#{snippet}'").should match /<img src=\"\"/
+    end
+
   end
 
   def render_nav(source = 'site', registers = {}, template_option = '')
